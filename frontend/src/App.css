@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+* {
+  font-family: 'Roboto Mono';
+  font-size: large;
+}
+
+@media screen and (max-width: 600px) {
+  * {
+    font-size: 12px;
+  }
+}
