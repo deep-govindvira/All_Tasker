@@ -19,6 +19,7 @@ const Home = () => {
       link: "/Expense"
     }
   ];
+
   return (
     <div className="container">
       <h1 className="mt-5">Welcome to LifeSuite!</h1>
@@ -26,8 +27,12 @@ const Home = () => {
       <div className="row mt-5">
         {cardsData.map((card, index) => (
           <div className="col-md-4 mb-4" key={index}>
-            <Link to={card.link} className="text-decoration-none">
-              <div className="card">
+            <Link
+              to={card.link}
+              className="text-decoration-none"
+              aria-label={`Navigate to ${card.title}`}
+            >
+              <div className="card hover-card">
                 <div className="card-body">
                   <h3 className="card-title">{card.title}</h3>
                   <p className="card-text">{card.description}</p>
