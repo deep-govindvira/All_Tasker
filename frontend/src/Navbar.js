@@ -1,13 +1,25 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
-function Navbar() {
+function Navbar({isLoggedIn, onLoginLogout}) {
+
+  const navigate = useNavigate();
 
   const data = [
-    { name: 'Home', url: '/' },
+    { name: 'Home', url: '' },
     { name: 'Todo', url: '/Todo' },
     { name: 'Note', url: '/Note' },
     { name: 'Expense', url: '/Expense' },
+    {
+      name: isLoggedIn ? 'Logout' : 'Login',
+      url: isLoggedIn ? '#' : '/login',
+      onClick: isLoggedIn
+        ? () => {
+            onLoginLogout();
+            navigate('/');
+          }
+        : null,
+    },
   ];
 
   return (
