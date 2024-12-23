@@ -40,6 +40,45 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+
+<!--	to start web server	-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<!--
+            https://springdoc.org/
+            http://localhost:8080/swagger-ui/index.html
+            http://localhost:8080/v3/api-docs
+        -->
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.3.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openapitools</groupId>
+			<artifactId>jackson-databind-nullable</artifactId>
+			<version>0.2.6</version>
+		</dependency>
+
+<!--	to use builder, getter, setter, log	-->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.30</version>
+			<scope>provided</scope>
+		</dependency>
+
+<!--	for database	-->
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk-dynamodb</artifactId>
+			<version>1.12.732</version>
+		</dependency>
 	</dependencies>
 
 	<build>
