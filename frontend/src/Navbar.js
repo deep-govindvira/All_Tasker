@@ -1,8 +1,7 @@
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 
-function Navbar({isLoggedIn, onLoginLogout}) {
-
+function Navbar({ isLoggedIn, onLoginLogout }) {
   const navigate = useNavigate();
 
   const data = [
@@ -11,16 +10,19 @@ function Navbar({isLoggedIn, onLoginLogout}) {
     { name: 'Note', url: '/Note' },
     { name: 'Expense', url: '/Expense' },
     {
-      name: isLoggedIn ? 'Logout' : 'Login',
-      url: isLoggedIn ? '#' : '/login',
-      onClick: isLoggedIn
-        ? () => {
-            onLoginLogout();
-            navigate('/');
-          }
-        : null,
+      name: '',
+      url: ''
     },
   ];
+
+  // Setting up conditional logic for the 'Logout' or 'Login' menu item
+  if (isLoggedIn) {
+    data[4].name = 'Logout';
+    data[4].url = '#';
+  } else {
+    data[4].name = '';
+    data[4].url = '/login';
+  }
 
   return (
     <div className="navbar navbar-expand-lg navbar-light bg-light">
@@ -38,23 +40,34 @@ function Navbar({isLoggedIn, onLoginLogout}) {
         </button>
         <div className="collapse navbar-collapse" id="basic-navbar-nav">
           <ul className="navbar-nav ms-auto">
-            {data.map((item, index) => (
-              <li className="nav-item" key={index}>
-                {item.url === '#' ? (
+            {data.map((item, index) => {
+              let navItem;
+              // logout button
+              if (item.url === '#') {
+                navItem = (
                   <button
                     className="btn btn-link nav-link"
-                    onClick={item.onClick}
+                    onClick={() => {
+                      if (isLoggedIn) {
+                        onLoginLogout();
+                        navigate('/');
+                      }
+                    }}
                     style={{ cursor: 'pointer', textDecoration: 'none' }}
                   >
                     {item.name}
                   </button>
-                ) : (
+                );
+              } else {
+                navItem = (
                   <NavLink to={item.url} className="nav-link">
                     {item.name}
                   </NavLink>
-                )}
-              </li>
-            ))}
+                );
+              }
+
+              return <li className="nav-item" key={index}>{navItem}</li>;
+            })}
           </ul>
         </div>
       </div>
