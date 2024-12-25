@@ -16,7 +16,6 @@ public class UserDAO {
         if (isExist(user)) return false;
         dynamoDBMapper.save(user);
         if (dynamoDBMapper.load(user) != null) {
-            log.info("registered {}", user);
             return true;
         }
         log.info("failed to register {}", user);
