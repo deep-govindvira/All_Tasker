@@ -23,7 +23,7 @@ public class UserDAO {
     }
 
     public boolean isExist(User user) {
-        if (dynamoDBMapper.load(user) != null && dynamoDBMapper.load(user).getPassword().equals(user.getPassword())) {
+        if (dynamoDBMapper.load(user) != null && dynamoDBMapper.load(user).getName().equals(user.getName())) {
             log.info("exist {}", user);
             return true;
         }
