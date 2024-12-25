@@ -7,6 +7,7 @@ import Expense from './expense/Expense';
 import Note from './note/Note';
 import { useEffect, useState } from 'react';
 import Login from './login/Login';
+import Register from './register/Register';
 
 function App() {
   const [isLoading, setisLoading] = useState(true);
@@ -48,6 +49,7 @@ function App() {
           <Route path='/Note' element={isLoggedIn ? <Note /> : <Navigate to="/login" />} />
           <Route path='/Expense' element={isLoggedIn ? <Expense /> : <Navigate to="/login" />} />
           <Route path='/login' element={<Login onLogin={setIsLoggedIn} />} />
+          <Route path='/register' element={<Register onLogin={setIsLoggedIn}/>} />
         </Routes>
       </BrowserRouter>
       <div className="fixed-bottom bg-dark text-light">Deep Govindvira © 2024</div>

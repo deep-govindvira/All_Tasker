@@ -22,7 +22,7 @@ const Home = () => {
 
   return (
     <div className="container">
-      <h1 className="mt-5">Welcome to LifeSuite!</h1>
+      <h1 className="mt-5">Welcome to AllTasker!</h1>
       <h2>What would you like to do today?</h2>
       <div className="row mt-5">
         {cardsData.map((card, index) => (

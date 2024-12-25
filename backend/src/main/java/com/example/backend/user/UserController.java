@@ -23,5 +23,14 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
         }
     }
+
+
+    @PostMapping("/register")
+    public ResponseEntity<String> register(@RequestBody User user) {
+        if (!userDAO.isExist(user) && userDAO.register(user)) {
+            return ResponseEntity.ok("Login successful");
+        }
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
+    }
 }
 

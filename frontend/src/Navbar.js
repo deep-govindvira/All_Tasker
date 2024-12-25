@@ -9,19 +9,21 @@ function Navbar({ isLoggedIn, onLoginLogout }) {
     { name: 'Todo', url: '/Todo' },
     { name: 'Note', url: '/Note' },
     { name: 'Expense', url: '/Expense' },
-    {
-      name: '',
-      url: ''
-    },
+    { name: '', url: ''},
+    { name: '', url: ''},
   ];
 
   // Setting up conditional logic for the 'Logout' or 'Login' menu item
   if (isLoggedIn) {
     data[4].name = 'Logout';
     data[4].url = '#';
+    data[5].name = '';
+    data[5].url = '#';
   } else {
     data[4].name = 'Login';
     data[4].url = '/login';
+    data[5].name = 'Register';
+    data[5].url = '/register';
   }
 
   return (

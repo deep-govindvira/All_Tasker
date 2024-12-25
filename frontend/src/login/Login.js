@@ -14,7 +14,7 @@ function Login({ onLogin }) {
             setErrorMessage('Username and password are required');
             return;
         }
-    
+
         axios.post('http://localhost:8080/login', {
             name: username,
             password: password
@@ -26,6 +26,8 @@ function Login({ onLogin }) {
                 navigate('/');
             }
         }).catch((error) => {
+            localStorage.removeItem('username');
+            localStorage.removeItem('password');
             if (error.response && error.response.status === 401) {
                 setErrorMessage('Invalid credentials');
             } else {
@@ -34,7 +36,6 @@ function Login({ onLogin }) {
             console.error("Login error:", error);
         });
     };
-    
 
     return (
         <div className="container mt-5">
@@ -64,6 +65,9 @@ function Login({ onLogin }) {
                             />
                         </div>
                         <button type="submit" className="btn btn-primary w-100">Login</button>
+                        <div className="text-center mt-3">
+                            <a href="/register" className="link-primary">Register</a>
+                        </div>
                     </form>
                 </div>
             </div>
