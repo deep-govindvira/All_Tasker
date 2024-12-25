@@ -4,6 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class UserController {
 
@@ -11,7 +16,12 @@ public class UserController {
     UserDAO userDAO;
 
     @PostMapping("/login")
-    public boolean login(User user) {
-        return userDAO.isExist(user);
+    public ResponseEntity<String> login(@RequestBody User user) {
+        if (userDAO.isExist(user)) {
+            return ResponseEntity.ok("Login successful");
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
+        }
     }
 }
+
