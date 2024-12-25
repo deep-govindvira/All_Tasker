@@ -8,6 +8,8 @@ import Note from './note/Note';
 import { useEffect, useState } from 'react';
 import Login from './login/Login';
 import Register from './register/Register';
+import Code from './code/Code';
+import Draw from './draw/Draw';
 
 function App() {
   const [isLoading, setisLoading] = useState(true);
@@ -48,6 +50,8 @@ function App() {
           <Route path='/Todo' element={isLoggedIn ? <Todo /> : <Navigate to="/login" />} />
           <Route path='/Note' element={isLoggedIn ? <Note /> : <Navigate to="/login" />} />
           <Route path='/Expense' element={isLoggedIn ? <Expense /> : <Navigate to="/login" />} />
+          <Route path='/Code' element={isLoggedIn ? <Code /> : <Navigate to="/login" />} />
+          <Route path='/Draw' element={isLoggedIn ? <Draw /> : <Navigate to="/login" />} />
           <Route path='/login' element={<Login onLogin={setIsLoggedIn} />} />
           <Route path='/register' element={<Register onLogin={setIsLoggedIn}/>} />
         </Routes>
