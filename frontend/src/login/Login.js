@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -9,14 +10,20 @@ function Login({ onLogin }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        if (username && password) {
-            localStorage.setItem('username', username);
-            onLogin(true);
-            navigate('/');
-        } else {
-            setErrorMessage('Please enter valid credentials');
-        }
+        axios.post('http://localhost:8080/login/', {
+            name: username,
+            password: password
+        }).then((isRegistered) => {
+            if (isRegistered) {
+                onLogin(true);
+                navigate('/');
+            }
+            else {
+                setErrorMessage('Please enter valid credentials');
+            }
+        }).catch((error) => {
+            console.log("Failed to register", username);
+        })
     };
 
     return (
