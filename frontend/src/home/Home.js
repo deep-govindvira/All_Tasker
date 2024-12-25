@@ -17,6 +17,14 @@ const Home = () => {
       title: "Expense",
       description: "Manage your expenses and budget",
       link: "/Expense"
+    },{
+      title: "Code",
+      description: "Write, save, and organize your code",
+      link: "/Code"
+    }, {
+      title: "Draw",
+      description: "Design and sketch your ideas freely",
+      link: "/Draw"
     }
   ];
 
