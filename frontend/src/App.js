@@ -15,13 +15,38 @@ import Search from './search/Search';
 function App() {
   const [isLoading, setisLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentDateTime, setCurrentDateTime] = useState('');
 
   useEffect(() => {
     const user = localStorage.getItem('username');
     if (user) {
       setIsLoggedIn(true);
     }
-    setisLoading(false)
+    setisLoading(false);
+  }, []);
+
+  useEffect(() => {
+    const updateDateTime = () => {
+      const now = new Date();
+      
+      const dayOfWeek = now.toLocaleString('en-us', { weekday: 'long' });
+      const month = now.toLocaleString('en-us', { month: 'long' });
+      const date = now.getDate();
+      const year = now.getFullYear();
+      const hours = now.getHours().toString().padStart(2, '0');
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      const seconds = now.getSeconds().toString().padStart(2, '0');
+
+      const dateString = `${dayOfWeek}, ${month} ${date}, ${year}`;
+      const timeString = `${hours}:${minutes}:${seconds}`;
+
+      setCurrentDateTime(`${dateString} - ${timeString}`);
+    };
+
+    const intervalId = setInterval(updateDateTime, 1000);
+    updateDateTime();
+
+    return () => clearInterval(intervalId);
   }, []);
 
   const handleLoginLogout = () => {
@@ -37,7 +62,7 @@ function App() {
       <div>
         Loading
       </div>
-    )
+    );
   }
 
   return (
@@ -58,9 +83,26 @@ function App() {
           <Route path='/register' element={<Register onLogin={setIsLoggedIn}/>} />
         </Routes>
       </BrowserRouter>
+      
+      <div style={styles.datetimeContainer}>
+        {currentDateTime}
+      </div>
+      
       <div className="fixed-bottom bg-dark text-light">Deep Govindvira © 2024</div>
     </div>
   );
 }
+
+const styles = {
+  datetimeContainer: {
+    position: 'fixed',
+    top: '10px',
+    right: '10px',
+    fontSize: '1.2em',
+    color: '#333',
+    padding: '5px 10px',
+    borderRadius: '5px',
+  }
+};
 
 export default App;
