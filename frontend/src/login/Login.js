@@ -10,21 +10,31 @@ function Login({ onLogin }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8080/login/', {
+        if (!username || !password) {
+            setErrorMessage('Username and password are required');
+            return;
+        }
+    
+        axios.post('http://localhost:8080/login', {
             name: username,
             password: password
-        }).then((isRegistered) => {
-            if (isRegistered) {
+        }).then((response) => {
+            if (response.status === 200) {
+                localStorage.setItem('username', username);
+                localStorage.setItem('password', password);
                 onLogin(true);
                 navigate('/');
             }
-            else {
-                setErrorMessage('Please enter valid credentials');
-            }
         }).catch((error) => {
-            console.log("Failed to register", username);
-        })
+            if (error.response && error.response.status === 401) {
+                setErrorMessage('Invalid credentials');
+            } else {
+                setErrorMessage('An error occurred. Please try again.');
+            }
+            console.error("Login error:", error);
+        });
     };
+    
 
     return (
         <div className="container mt-5">

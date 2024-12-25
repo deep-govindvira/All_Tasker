@@ -20,7 +20,7 @@ function Navbar({ isLoggedIn, onLoginLogout }) {
     data[4].name = 'Logout';
     data[4].url = '#';
   } else {
-    data[4].name = '';
+    data[4].name = 'Login';
     data[4].url = '/login';
   }
 
