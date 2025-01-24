@@ -4,7 +4,7 @@ const Search = () => {
   return (
     <div style={{ height: '100vh', width: '100%' }}>
       <iframe 
-        src="https://search-deep-govindvira.netlify.app/"
+        src="https://keepfast.netlify.app/"
         title="Embedded Website"
         style={{ width: '100%', height: '100%', border: 'none' }}
         allowFullScreen
