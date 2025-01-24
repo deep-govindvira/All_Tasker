@@ -30,6 +30,11 @@ const Home = () => {
       title: "Search",
       description: "Find and access information quickly",
       link: "/Search"
+    },
+    {
+      title: "Chat",
+      description: "Connect, communicate, and collaborate in real time",
+      link: "/Chat"
     }
   ];
 

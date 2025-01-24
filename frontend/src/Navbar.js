@@ -12,6 +12,7 @@ function Navbar({ isLoggedIn, onLoginLogout }) {
     { name: 'Code', url: '/Code' },
     { name: 'Draw', url: '/Draw' },
     { name: 'Search', url: '/Search' },
+    { name: 'Chat', url: '/Chat'},
     { name: '', url: ''},
     { name: '', url: ''},
   ];
