@@ -12,6 +12,8 @@ import Code from './code/Code';
 import Draw from './draw/Draw';
 import Search from './search/Search';
 import Chat from './chat/Chat';
+import NoteAdd from './note/NoteAdd';
+import NoteUpdate from './note/NoteUpdate';
 
 function App() {
   const [isLoading, setisLoading] = useState(true);
@@ -81,6 +83,9 @@ function App() {
           <Route path='/Draw' element={isLoggedIn ? <Draw /> : <Navigate to="/login" />} />
           <Route path='/Search' element={isLoggedIn ? <Search /> : <Navigate to="/login" />} />
           <Route path='/Chat' element={isLoggedIn ? <Chat /> : <Navigate to="/login" />} />
+          <Route path='/Note' element={isLoggedIn ? <Note /> : <Navigate to="/login" />} />
+          <Route path='/Note/Add' element={isLoggedIn ? <NoteAdd /> : <Navigate to="/login" />} />
+          <Route path='/Note/:id' element={isLoggedIn ? <NoteUpdate /> : <Navigate to="/login" />} />
           <Route path='/login' element={<Login onLogin={setIsLoggedIn} />} />
           <Route path='/register' element={<Register onLogin={setIsLoggedIn}/>} />
         </Routes>

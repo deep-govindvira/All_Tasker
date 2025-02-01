@@ -4,7 +4,7 @@ const Draw = () => {
   return (
     <div>
       <iframe
-        src="https://www.autodraw.com/"
+        src="https://excalidraw.com/"
         width="100%"
         height="600"
         frameBorder="0"
