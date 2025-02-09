@@ -95,7 +95,7 @@ function App() {
         {currentDateTime}
       </div>
       
-      <div className="fixed-bottom bg-dark text-light">Deep Govindvira © 2024</div>
+      <div className="fixed-bottom bg-dark text-light">Deep Govindvira © 2025</div>
     </div>
   );
 }
@@ -105,7 +105,7 @@ const styles = {
     position: 'fixed',
     top: '10px',
     right: '10px',
-    fontSize: '1.2em',
+    fontSize: '1.0em',
     color: '#333',
     padding: '5px 10px',
     borderRadius: '5px',

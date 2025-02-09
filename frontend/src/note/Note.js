@@ -18,8 +18,8 @@ const Note = () => {
     const getNotes = async () => {
         try {
             const response = await axios.post(API + '/get', {
-                name:localStorage.getItem('username'),
-                password:localStorage.getItem('password')
+                name: localStorage.getItem('username'),
+                password: localStorage.getItem('password')
             });
             setData(response.data);
         } catch (error) {
@@ -70,22 +70,31 @@ const Note = () => {
                     />
                 </div>
                 <div className="card-columns">
-                    {filteredData.map(item => (
-                        <div
-                            key={item.id}
-                            className={`card ${item.color}`}
-                            style={{ cursor: 'pointer' }}
-                            onClick={() => updateNote(item.id)}
-                        >
-                            <div className="card-body">
-                                <h5 className="card-title">{item.title}</h5>
-                                <p style={{ textAlign: 'left', whiteSpace: 'pre-line' }} className="card-text">
-                                    {item.description}
-                                </p>
+                    {filteredData.map(item => {
+                        const maxLength = 100;
+                        const title = item.title?.trim() || "Untitled";
+                        const description = item.description?.trim() || "No description available.";
+                        const truncatedDescription =
+                            description.length > maxLength ? description.slice(0, maxLength) + "..." : description;
+
+                        return (
+                            <div
+                                key={item.id}
+                                className={`card ${item.color}`}
+                                style={{ cursor: 'pointer' }}
+                                onClick={() => updateNote(item.id)}
+                            >
+                                <div className="card-body">
+                                    <h5 className="card-title">{title}</h5>
+                                    <p style={{ textAlign: 'left', whiteSpace: 'pre-wrap', color: 'inherit' }} className="card-text">
+                                        {truncatedDescription}
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
+
             </div>
         </div>
     );
