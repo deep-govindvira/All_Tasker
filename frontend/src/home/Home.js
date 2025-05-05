@@ -26,11 +26,11 @@ const Home = () => {
       description: "Design and sketch your ideas freely",
       link: "/Draw"
     },
-    {
-      title: "Search",
-      description: "Find and access information quickly",
-      link: "/Search"
-    },
+    // {
+    //   title: "Search",
+    //   description: "Find and access information quickly",
+    //   link: "/Search"
+    // },
     {
       title: "Chat",
       description: "Connect, communicate, and collaborate in real time",

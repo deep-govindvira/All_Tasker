@@ -86,7 +86,7 @@ function App() {
           <Route path='/Note' element={isLoggedIn ? <Note /> : <Navigate to="/login" />} />
           <Route path='/Note/Add' element={isLoggedIn ? <NoteAdd /> : <Navigate to="/login" />} />
           <Route path='/Note/:id' element={isLoggedIn ? <NoteUpdate /> : <Navigate to="/login" />} />
-          <Route path='/login' element={<Login onLogin={setIsLoggedIn} />} />
+          <Route path='/login' element={isLoggedIn ? <Navigate to="/" /> : <Login onLogin={setIsLoggedIn} />} />
           <Route path='/register' element={<Register onLogin={setIsLoggedIn}/>} />
         </Routes>
       </BrowserRouter>

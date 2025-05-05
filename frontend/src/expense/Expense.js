@@ -422,7 +422,7 @@ const Expense = () => {
                 )}
 
                 {/* Doughnut Chart */}
-                {filteredData.length > 0 && (
+                {/* {filteredData.length > 0 && (
                     <div className="col-md-6 mb-3">
                         <div className="card">
                             <div className="card-body">
@@ -433,7 +433,7 @@ const Expense = () => {
                             </div>
                         </div>
                     </div>
-                )}
+                )} */}
 
                 {/* Radar Chart */}
                 {/* {filteredData.length > 0 && (
@@ -464,7 +464,7 @@ const Expense = () => {
                 )}
 
                 {/* Bubble Chart */}
-                {filteredData.length > 0 && (
+                {/* {filteredData.length > 0 && (
                     <div className="col-md-6 mb-3">
                         <div className="card">
                             <div className="card-body">
@@ -475,7 +475,7 @@ const Expense = () => {
                             </div>
                         </div>
                     </div>
-                )}
+                )} */}
 
 
             </div>
@@ -503,10 +503,10 @@ const Expense = () => {
                             value={item.amount}
                             onChange={(e) => {
                                 updateAmount(item.id, e.target.value)
-                                const newData = data.map(d =>
-                                    d.id === item.id ? { ...d, amount: parseFloat(e.target.value) || 0 } : d
-                                );
-                                setData(newData);
+                                // const newData = data.map(d =>
+                                //     d.id === item.id ? { ...d, amount: parseFloat(e.target.value) || 0 } : d
+                                // );
+                                // setData(newData);
                             }}
                             className="form-control"
                         />
